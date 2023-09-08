@@ -10,5 +10,6 @@
         update_cache: true
         state: present
   tasks:
+    - include: playbooks/tools.yml
     - include: playbooks/px4.yml
     - include: playbooks/uxrce-dds.yml

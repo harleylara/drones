@@ -12,7 +12,9 @@
     - uxrce
 - name: Install Micro XRCE-DDS agent
   become: true
-  shell: "cd {{uxrce_agent_dir}}/build && make install"
+  shell: "make install"
+  args:
+    chdir: "{{uxrce_agent_dir}}/build"
   tags:
     - uxrce
 - name: Final setup of agent
