@@ -1,0 +1,14 @@
+- hosts: localhost
+  vars:
+    px4_dir: "~/PX4-Autopilot"
+    uxrce_agent_dir: "~/Micro-XRCE-DDS-Agent"
+  pre_tasks:
+    - name: Apt update
+      become: true
+      apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+  tasks:
+    - include: playbooks/px4.yml
+    - include: playbooks/uxrce-dds.yml

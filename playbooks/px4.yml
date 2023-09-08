@@ -1,0 +1,17 @@
+- name: Clone development environment for PX4
+  git:
+    repo: https://github.com/PX4/PX4-Autopilot.git
+    recursive: true
+    dest: "{{px4_dir}}"
+  tags:
+    - px4
+- name: Setup tool
+  shell: "{{px4_dir}}/Tools/setup/ubuntu.sh"
+  tags:
+    - px4
+- name: Make PX4
+  shell: make px4_sitl
+  args:
+    chdir: "{{px4_dir}}"
+  tags:
+    - px4

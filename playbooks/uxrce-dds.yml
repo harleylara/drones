@@ -1,0 +1,22 @@
+- name: Git clone Micro XRCE-DDS agent
+  git:
+    repo: https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
+    dest: "{{uxrce_agent_dir}}"
+  tags:
+    - uxrce
+- name: Build agent
+  shell: mkdir build && cd build && cmake .. && make
+  args:
+    chdir: "{{uxrce_agent_dir}}"
+  tags:
+    - uxrce
+- name: Install Micro XRCE-DDS agent
+  become: true
+  shell: "cd {{uxrce_agent_dir}}/build && make install"
+  tags:
+    - uxrce
+- name: Final setup of agent
+  become: true
+  shell: lsconfig /usr/local/lib/
+  tags:
+    - uxrce
