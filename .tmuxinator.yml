@@ -48,5 +48,5 @@ windows:
   - sim:
       layout: main-vertical
       panes:
-        - make px4_sitl gz_x500
+        - cd ~/PX4-Autopilot/ && make px4_sitl gz_x500
         - MicroXRCEAgent udp4 -p 8888
