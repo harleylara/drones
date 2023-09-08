@@ -1,0 +1,6 @@
+- name: Install tools
+  become: true
+  apt:
+    name: ["tmux", "tmuxinator"]
+  tags:
+    - tools
